@@ -1,8 +1,8 @@
-// Representa uma atividade obrigatória no curso, como definida no PPC.
-public class AtividadeCurricular {
+public class AtividadeCurricular implements RequisitoIntegralizacao {
     private String nome;
     private int cargaHoraria;
     private boolean obrigatoria;
+    private boolean concluido = false;
 
     public AtividadeCurricular(String nome, int cargaHoraria, boolean obrigatoria) {
         this.nome = nome;
@@ -10,6 +10,7 @@ public class AtividadeCurricular {
         this.obrigatoria = obrigatoria;
     }
 
+    @Override
     public String getNome() {
         return nome;
     }
@@ -20,6 +21,16 @@ public class AtividadeCurricular {
 
     public boolean isObrigatoria() {
         return obrigatoria;
+    }
+
+    @Override
+    public boolean isConcluido() {
+        return concluido;
+    }
+
+    @Override
+    public void concluir() {
+        this.concluido = true;
     }
 
     @Override
