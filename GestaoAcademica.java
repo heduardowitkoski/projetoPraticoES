@@ -3,113 +3,176 @@ import java.util.*;
 public class GestaoAcademica {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Map<String, Historico> historicos = new HashMap<>();
 
-        // Leitura do curso
-        Curso curso = LeitorDeCursoTXT.lerCursoDeArquivo("curso.txt");
+        // =========================
+        // Leitura do curso pelo JSON
+        // =========================
+        Curso curso = LeitorDeCursoJSON.lerCursoDeArquivo("curso.json");
+
         if (curso == null) {
-            System.out.println("Erro ao carregar o curso.");
+            System.out.println("Falha ao carregar o curso.");
             return;
         }
 
-        System.out.println("Curso carregado: " + curso.getNome());
+        // =========================
+        // Lista de discentes e históricos
+        // =========================
+        Map<Discente, Historico> discentes = new HashMap<>();
 
-        // Menu principal
-        while (true) {
-            System.out.println("\n===== MENU =====");
+        int opcao = -1;
+
+        do {
+            System.out.println("\n===== Menu Principal =====");
             System.out.println("1 - Cadastrar discente");
-            System.out.println("2 - Inserir componente concluída");
-            System.out.println("3 - Verificar histórico");
-            System.out.println("4 - Sair");
+            System.out.println("2 - Gerenciar discente");
+            System.out.println("3 - Listar discentes");
+            System.out.println("0 - Sair");
             System.out.print("Escolha uma opção: ");
-
-            String opcao = scanner.nextLine().trim();
+            opcao = scanner.nextInt();
+            scanner.nextLine(); // Limpar buffer
 
             switch (opcao) {
-                case "1": {
+                case 1:
+                    System.out.println("\n===== Cadastro de Discente =====");
                     System.out.print("Nome do discente: ");
                     String nome = scanner.nextLine();
+
                     System.out.print("Matrícula do discente: ");
                     String matricula = scanner.nextLine();
 
-                    if (historicos.containsKey(matricula)) {
-                        System.out.println("Já existe um discente com essa matrícula.");
-                    } else {
-                        Discente novo = new Discente(nome, matricula);
-                        historicos.put(matricula, new Historico(novo));
-                        System.out.println("Discente cadastrado com sucesso.");
-                    }
+                    Discente discente = new Discente(nome, matricula);
+                    Historico historico = new Historico(discente);
+                    discentes.put(discente, historico);
+
+                    System.out.println(">>> Discente cadastrado com sucesso.");
                     break;
-                }
 
-                case "2": {
-                    System.out.print("Digite a matrícula do discente: ");
-                    String matricula = scanner.nextLine();
-
-                    Historico historico = historicos.get(matricula);
-                    if (historico == null) {
-                        System.out.println("Discente não encontrado.");
+                case 2:
+                    if (discentes.isEmpty()) {
+                        System.out.println(">>> Nenhum discente cadastrado.");
                         break;
                     }
 
-                    System.out.println("\nComponentes curriculares disponíveis:");
-                    int i = 1;
-                    for (AtividadeCurricular ac : curso.getRequisitosIntegralizacao()) {
-                        System.out.println(i++ + ". " + ac);
-                    }
-
-                    System.out.print("Número da atividade concluída: ");
-                    String entrada = scanner.nextLine().trim();
-
-                    if (!entrada.matches("\\d+")) {
-                        System.out.println("Entrada inválida.");
+                    Discente selecionado = selecionarDiscente(discentes, scanner);
+                    if (selecionado == null) {
+                        System.out.println(">>> Operação cancelada.");
                         break;
                     }
 
-                    int escolha = Integer.parseInt(entrada);
-                    if (escolha < 1 || escolha > curso.getRequisitosIntegralizacao().size()) {
-                        System.out.println("Número inválido.");
+                    gerenciarDiscente(curso, selecionado, discentes.get(selecionado), scanner);
+                    break;
+
+                case 3:
+                    System.out.println("\n===== Discentes Cadastrados =====");
+                    if (discentes.isEmpty()) {
+                        System.out.println(">>> Nenhum discente cadastrado.");
                     } else {
-                        AtividadeCurricular ac = curso.getRequisitosIntegralizacao().get(escolha - 1);
-                        if (historico.atividadeConcluida(ac.getNome())) {
-                            System.out.println("Essa atividade já foi registrada.");
-                        } else {
-                            historico.adicionarAtividade(ac);
-                            System.out.println("Atividade adicionada ao histórico.");
+                        int i = 1;
+                        for (Discente d : discentes.keySet()) {
+                            System.out.println(i + " - " + d.getNome() + " | Matrícula: " + d.getMatricula());
+                            i++;
                         }
                     }
                     break;
-                }
 
-                case "3": {
-                    System.out.print("Digite a matrícula do discente: ");
-                    String matricula = scanner.nextLine();
-
-                    Historico historico = historicos.get(matricula);
-                    if (historico == null) {
-                        System.out.println("Discente não encontrado.");
-                        break;
-                    }
-
-                    historico.listarAtividades();
-
-                    System.out.println("\nAtividades obrigatórias faltantes:");
-                    for (AtividadeCurricular ac : curso.getRequisitosIntegralizacao()) {
-                        if (ac.isObrigatoria() && !historico.atividadeConcluida(ac.getNome())) {
-                            System.out.println("- " + ac);
-                        }
-                    }
+                case 0:
+                    System.out.println("Encerrando...");
                     break;
-                }
-
-                case "4":
-                    System.out.println("Encerrando o programa.");
-                    scanner.close();
-                    return;
 
                 default:
-                    System.out.println("Opção inválida.");
+                    System.out.println(">>> Opção inválida. Tente novamente.");
+                    break;
             }
+
+        } while (opcao != 0);
+
+        scanner.close();
+    }
+
+    private static Discente selecionarDiscente(Map<Discente, Historico> discentes, Scanner scanner) {
+        List<Discente> lista = new ArrayList<>(discentes.keySet());
+
+        System.out.println("\n===== Selecionar Discente =====");
+        for (int i = 0; i < lista.size(); i++) {
+            Discente d = lista.get(i);
+            System.out.println((i + 1) + " - " + d.getNome() + " | Matrícula: " + d.getMatricula());
         }
+        System.out.print("Informe o número do discente (ou 0 para cancelar): ");
+        int escolha = scanner.nextInt();
+        scanner.nextLine();
+
+        if (escolha == 0) {
+            return null;
+        }
+
+        if (escolha < 1 || escolha > lista.size()) {
+            System.out.println(">>> Opção inválida.");
+            return null;
+        }
+
+        return lista.get(escolha - 1);
+    }
+
+    private static void gerenciarDiscente(Curso curso, Discente aluno, Historico historico, Scanner scanner) {
+        int opcao = -1;
+
+        do {
+            System.out.println("\n===== Menu - Discente: " + aluno.getNome() + " =====");
+            System.out.println("1 - Ver requisitos do curso");
+            System.out.println("2 - Adicionar requisito concluído");
+            System.out.println("3 - Ver histórico do discente");
+            System.out.println("0 - Voltar ao menu principal");
+            System.out.print("Escolha uma opção: ");
+            opcao = scanner.nextInt();
+            scanner.nextLine(); // Limpar buffer
+
+            switch (opcao) {
+                case 1:
+                    System.out.println("\n===== Requisitos do Curso =====");
+                    int index = 1;
+                    for (RequisitoIntegralizacao req : curso.getRequisitos()) {
+                        System.out.println(index + " - " + req.getNome());
+                        index++;
+                    }
+                    break;
+
+                case 2:
+                    System.out.println("\n===== Marcar requisito como concluído =====");
+                    int idx = 1;
+                    for (RequisitoIntegralizacao req : curso.getRequisitos()) {
+                        System.out.println(idx + " - " + req.getNome());
+                        idx++;
+                    }
+                    System.out.print("Informe o número do requisito concluído: ");
+                    int escolha = scanner.nextInt();
+                    scanner.nextLine();
+
+                    if (escolha >= 1 && escolha <= curso.getRequisitos().size()) {
+                        RequisitoIntegralizacao requisito = curso.getRequisitos().get(escolha - 1);
+                        if (historico.getRequisitosConcluidos().contains(requisito)) {
+                            System.out.println(">>> Este requisito já foi concluído.");
+                        } else {
+                            historico.adicionarRequisito(requisito);
+                            System.out.println(">>> Requisito '" + requisito.getNome() + "' adicionado ao histórico.");
+                        }
+                    } else {
+                        System.out.println(">>> Opção inválida.");
+                    }
+                    break;
+
+                case 3:
+                    System.out.println("\n===== Histórico do Discente =====");
+                    historico.listarRequisitos();
+                    break;
+
+                case 0:
+                    System.out.println(">>> Voltando ao menu principal...");
+                    break;
+
+                default:
+                    System.out.println(">>> Opção inválida. Tente novamente.");
+                    break;
+            }
+        } while (opcao != 0);
     }
 }
