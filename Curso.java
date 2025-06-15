@@ -2,18 +2,18 @@ import java.util.List;
 
 public class Curso {
     private String nome;
-    private List<AtividadeCurricular> requisitosIntegralizacao;
+    private List<RequisitoIntegralizacao> requisitos;
 
-    public Curso(String nome, List<AtividadeCurricular> requisitosIntegralizacao) {
+    public Curso(String nome, List<RequisitoIntegralizacao> requisitos) {
         this.nome = nome;
-        this.requisitosIntegralizacao = requisitosIntegralizacao;
+        this.requisitos = requisitos;
     }
 
     public String getNome() {
         return nome;
     }
 
-    public List<AtividadeCurricular> getRequisitosIntegralizacao() {
-        return requisitosIntegralizacao;
+    public List<RequisitoIntegralizacao> getRequisitos() {
+        return requisitos;
     }
 }
