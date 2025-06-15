@@ -3,25 +3,30 @@ import java.util.List;
 
 public class Historico {
     private Discente discente;
-    private List<AtividadeCurricular> atividadesConcluidas;
+    private List<RequisitoIntegralizacao> requisitosConcluidos;
 
     public Historico(Discente discente) {
         this.discente = discente;
-        this.atividadesConcluidas = new ArrayList<>();
+        this.requisitosConcluidos = new ArrayList<>();
     }
 
-    public void adicionarAtividade(AtividadeCurricular atividade) {
-        atividadesConcluidas.add(atividade);
+    public void adicionarRequisito(RequisitoIntegralizacao requisito) {
+        requisito.concluir();
+        requisitosConcluidos.add(requisito);
     }
 
-    public boolean atividadeConcluida(String nome) {
-        return atividadesConcluidas.stream().anyMatch(a -> a.getNome().equals(nome));
+    public boolean requisitoConcluido(String nome) {
+        return requisitosConcluidos.stream().anyMatch(r -> r.getNome().equalsIgnoreCase(nome));
     }
 
-    public void listarAtividades() {
+    public List<RequisitoIntegralizacao> getRequisitosConcluidos() {
+        return requisitosConcluidos;
+    }
+
+    public void listarRequisitos() {
         System.out.println("Histórico de " + discente.getNome() + ":");
-        for (AtividadeCurricular a : atividadesConcluidas) {
-            System.out.println("- " + a);
+        for (RequisitoIntegralizacao r : requisitosConcluidos) {
+            System.out.println("- " + r.getNome());
         }
     }
 }
