@@ -3,30 +3,39 @@ import java.util.List;
 
 public class Historico {
     private Discente discente;
-    private List<RequisitoIntegralizacao> requisitosConcluidos;
+    private List<RequisitoIntegralizacao> requisitos;
+    private List<RequisitoIntegralizacao> requisitosConcluidos = new ArrayList<>();
 
-    public Historico(Discente discente) {
+    public Historico(Discente discente, List<RequisitoIntegralizacao> requisitos) {
         this.discente = discente;
-        this.requisitosConcluidos = new ArrayList<>();
+        this.requisitos = requisitos;
     }
 
-    public void adicionarRequisito(RequisitoIntegralizacao requisito) {
-        requisito.concluir();
-        requisitosConcluidos.add(requisito);
+    public Discente getDiscente() {
+        return discente;
     }
 
-    public boolean requisitoConcluido(String nome) {
-        return requisitosConcluidos.stream().anyMatch(r -> r.getNome().equalsIgnoreCase(nome));
+    public List<RequisitoIntegralizacao> getRequisitos() {
+        return requisitos;
     }
 
     public List<RequisitoIntegralizacao> getRequisitosConcluidos() {
         return requisitosConcluidos;
     }
 
-    public void listarRequisitos() {
-        System.out.println("Histórico de " + discente.getNome() + ":");
-        for (RequisitoIntegralizacao r : requisitosConcluidos) {
-            System.out.println("- " + r.getNome());
+    public void adicionarRequisito(RequisitoIntegralizacao requisito) {
+        requisitosConcluidos.add(requisito);
+    }
+
+    public void listarRequisitosFormatado() {
+        System.out.println("\n===== Histórico de " + discente.getNome() + " =====");
+        for (RequisitoIntegralizacao r : requisitos) {
+            String status = requisitosConcluidos.contains(r) ? "✅ Concluído" : "❌ Não concluído";
+            System.out.println(r + " - " + status);
         }
+    }
+
+    public void atualizarRequisitos(List<RequisitoIntegralizacao> novosRequisitos) {
+        this.requisitos = novosRequisitos;
     }
 }
