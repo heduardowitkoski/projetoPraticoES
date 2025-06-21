@@ -3,7 +3,7 @@ public class UnipampaCidada implements RequisitoIntegralizacao {
 
     @Override
     public String getNome() {
-        return "UNIPAMPA Cidadã";
+        return "UNIPAMPA Cidadã (60h de serviços comunitários)";
     }
 
     @Override
@@ -14,5 +14,10 @@ public class UnipampaCidada implements RequisitoIntegralizacao {
     @Override
     public void concluir() {
         concluido = true;
+    }
+
+    @Override
+    public String toString() {
+        return getNome() + (concluido ? " ✅" : " ❌");
     }
 }
