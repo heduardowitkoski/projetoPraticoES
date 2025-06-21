@@ -1,0 +1,22 @@
+2025-06-21T18:54:53.872296573 - Admin cadastrou discente 2310100971
+2025-06-21T18:56:22.509680395 - Admin cadastrou discente 2310100971
+2025-06-21T18:56:29.020478751 - Gerou relatório do discente 2310100971
+2025-06-21T18:58:14.558911303 - Admin cadastrou discente 2310100971
+2025-06-21T19:20:22.172293481 - Discente 2310100971 concluiu: Algoritmos
+2025-06-21T19:20:22.173545312 - Discente 2310100971 concluiu: Programação Orientada a Objetos
+2025-06-21T19:20:32.909189129 - Gerou relatório do discente 2310100971
+2025-06-21T19:22:29.388667095 - Discente 2310100971 concluiu: Algoritmos
+2025-06-21T19:22:29.389976932 - Discente 2310100971 concluiu: Programação Orientada a Objetos
+2025-06-21T19:22:58.211426941 - Admin cadastrou discente 231010
+2025-06-21T19:23:11.809129926 - Gerou relatório do discente 231010
+2025-06-21T19:23:54.352100077 - Discente 231010 concluiu: Estágio Curricular Supervisionado
+2025-06-21T19:28:43.629005807 - Discente 231010 concluiu: Estágio Curricular Supervisionado
+2025-06-21T19:28:43.630255650 - Discente 2310100971 concluiu: Algoritmos
+2025-06-21T19:28:43.630375665 - Discente 2310100971 concluiu: Programação Orientada a Objetos
+2025-06-21T19:31:55.325147180 - Discente 231010 concluiu: UNIPAMPA Cidadã (60h de serviços comunitários)
+2025-06-21T19:33:31.829837038 - Admin cadastrou discente 10
+2025-06-21T19:33:37.938860623 - Gerou relatório do discente 10
+2025-06-21T19:34:11.241160783 - Gerou relatório do discente 10
+2025-06-21T19:50:44.086319766 - Gerou relatório do discente 2310100971
+2025-06-21T19:55:08.292826022 - Gerou relatório do discente 2310100971
+2025-06-21T20:05:27.126733043 - Gerou relatório do discente 2310100971
