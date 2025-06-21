@@ -15,4 +15,9 @@ public class Enade implements RequisitoIntegralizacao {
     public void concluir() {
         concluido = true;
     }
+
+    @Override
+    public String toString() {
+        return getNome() + (concluido ? " ✅" : " ❌");
+    }
 }
