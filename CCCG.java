@@ -3,7 +3,7 @@ public class CCCG implements RequisitoIntegralizacao {
 
     @Override
     public String getNome() {
-        return "Componentes Curriculares Complementares de Graduação (CCCG)";
+        return "Componentes Curriculares Complementares (CCCG)";
     }
 
     @Override
@@ -14,5 +14,10 @@ public class CCCG implements RequisitoIntegralizacao {
     @Override
     public void concluir() {
         concluido = true;
+    }
+
+    @Override
+    public String toString() {
+        return getNome() + (concluido ? " ✅" : " ❌");
     }
 }
