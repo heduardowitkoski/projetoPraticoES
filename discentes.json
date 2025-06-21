@@ -1,0 +1,26 @@
+[
+  {
+    "nome": "fulano",
+    "matricula": "231010",
+    "senha": "111",
+    "requisitosConcluidos": [
+      "Estágio Curricular Supervisionado",
+      "UNIPAMPA Cidadã (60h de serviços comunitários)"
+    ]
+  },
+  {
+    "nome": "beltrano",
+    "matricula": "10",
+    "senha": "111",
+    "requisitosConcluidos": []
+  },
+  {
+    "nome": "Heduardo Witkoski",
+    "matricula": "2310100971",
+    "senha": "111",
+    "requisitosConcluidos": [
+      "Circuitos Elétricos I",
+      "Projeto Final de Curso (I e II)"
+    ]
+  }
+]
