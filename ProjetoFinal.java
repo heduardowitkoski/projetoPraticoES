@@ -28,7 +28,7 @@ public class ProjetoFinal implements RequisitoIntegralizacao {
 
     @Override
     public String toString() {
-        return getNome() + " - Etapa I: " + (etapa1Concluida ? "Concluída" : "Pendente") +
-                ", Etapa II: " + (etapa2Concluida ? "Concluída" : "Pendente");
+        return getNome() + " - Etapa I: " + (etapa1Concluida ? "✅" : "❌") +
+                ", Etapa II: " + (etapa2Concluida ? "✅" : "❌");
     }
 }
