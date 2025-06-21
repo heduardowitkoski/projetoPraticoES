@@ -30,6 +30,6 @@ public class SubmissoesAcademicas implements RequisitoIntegralizacao {
 
     @Override
     public String toString() {
-        return getNome() + " - Resumos: " + resumosSubmetidos + "/2, Artigo: " + (artigoSubmetido ? "Submetido" : "Pendente");
+        return getNome() + " - Resumos: " + resumosSubmetidos + "/2, Artigo: " + (artigoSubmetido ? "✅" : "❌");
     }
 }
