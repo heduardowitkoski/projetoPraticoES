@@ -1,12 +1,8 @@
+import com.google.gson.*;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 
 public class LeitorDeCursoJSON {
 
@@ -20,18 +16,38 @@ public class LeitorDeCursoJSON {
 
             List<RequisitoIntegralizacao> requisitos = new ArrayList<>();
 
-            // Ler componentes curriculares (disciplinas)
             for (JsonElement elemento : componentesJson) {
                 JsonObject obj = elemento.getAsJsonObject();
 
+                // Defina codigo e area como "N/A" se não estiverem no JSON
+                String codigo = obj.has("codigo") ? obj.get("codigo").getAsString() : "N/A";
                 String nome = obj.get("nome").getAsString();
                 int cargaHoraria = obj.get("cargaHoraria").getAsInt();
+                String area = obj.has("area") ? obj.get("area").getAsString() : "Geral";
+                int semestre = obj.has("semestre") ? obj.get("semestre").getAsInt() : 0;
+
+                List<String> prerequisitos = new ArrayList<>();
+                if (obj.has("prerequisitos")) {
+                    JsonArray prereqArray = obj.getAsJsonArray("prerequisitos");
+                    for (JsonElement e : prereqArray) {
+                        prerequisitos.add(e.getAsString());
+                    }
+                }
+
                 boolean obrigatoria = obj.get("obrigatoria").getAsBoolean();
 
-                requisitos.add(new AtividadeCurricular(nome, cargaHoraria, obrigatoria));
+                requisitos.add(new AtividadeCurricular(
+                        codigo,
+                        nome,
+                        cargaHoraria,
+                        area,
+                        semestre,
+                        prerequisitos,
+                        obrigatoria
+                ));
             }
 
-            // Adiciona os requisitos fixos do curso (não estão no JSON)
+            // Adiciona requisitos institucionais fixos (não estão no JSON)
             requisitos.add(new Enade());
             requisitos.add(new EstagioSupervisionado());
             requisitos.add(new ProjetoFinal());
@@ -48,4 +64,6 @@ public class LeitorDeCursoJSON {
             return null;
         }
     }
+
 }
+
