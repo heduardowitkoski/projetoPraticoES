@@ -4,7 +4,7 @@ public class PraticaExtensionista implements RequisitoIntegralizacao {
 
     @Override
     public String getNome() {
-        return "Prática Extensionista (I e II)";
+        return "Práticas Extensionistas (I e II)";
     }
 
     @Override
@@ -28,7 +28,7 @@ public class PraticaExtensionista implements RequisitoIntegralizacao {
 
     @Override
     public String toString() {
-        return getNome() + " - Etapa I: " + (etapa1Concluida ? "Concluída" : "Pendente") +
-                ", Etapa II: " + (etapa2Concluida ? "Concluída" : "Pendente");
+        return getNome() + " - Etapa I: " + (etapa1Concluida ? "✅" : "❌") +
+                ", Etapa II: " + (etapa2Concluida ? "✅" : "❌");
     }
 }
