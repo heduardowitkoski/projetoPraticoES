@@ -1,0 +1,32 @@
+{
+  "concluidos": [
+    {
+      "nome": "UNIPAMPA Cidadã (60h de serviços comunitários)",
+      "tipo": "UnipampaCidada",
+      "descricao": "fiz um sistema completo para.."
+    },
+    {
+      "nome": "Situação regular no ENADE",
+      "tipo": "Outro"
+    },
+    {
+      "nome": "Estágio Curricular Supervisionado",
+      "tipo": "EstagioSupervisionado",
+      "empresa": "TechSolutions",
+      "dataInicio": "01/05/2026",
+      "dataTermino": "01/01/2027"
+    },
+    {
+      "nome": "Atividades Complementares (75 horas)",
+      "tipo": "Outro"
+    },
+    {
+      "nome": "Circuitos Elétricos I",
+      "tipo": "AtividadeCurricular",
+      "codigo": "EC023",
+      "cargaHoraria": 60,
+      "obrigatoria": true,
+      "concluido": true
+    }
+  ]
+}

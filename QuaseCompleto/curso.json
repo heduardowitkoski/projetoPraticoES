@@ -1,0 +1,72 @@
+{
+  "nome": "Engenharia de Computação",
+  "componentes": [
+    { "codigo": "EC001", "nome": "Elementos de Física", "cargaHoraria": 30, "obrigatoria": true, "semestre": 1, "area": "Engenharia de Computação", "prerequisitos": [] },
+    { "codigo": "EC002", "nome": "Fundamentos de Hardware e Software", "cargaHoraria": 90, "obrigatoria": true, "semestre": 1, "area": "Engenharia de Computação", "prerequisitos": [] },
+    { "codigo": "EC003", "nome": "Introdução à Engenharia de Computação", "cargaHoraria": 60, "obrigatoria": true, "semestre": 1, "area": "Engenharia de Computação", "prerequisitos": [] },
+    { "codigo": "EC004", "nome": "Gestão de Projetos I", "cargaHoraria": 30, "obrigatoria": true, "semestre": 1, "area": "Engenharia de Computação", "prerequisitos": [] },
+    { "codigo": "EC005", "nome": "Cálculo A", "cargaHoraria": 60, "obrigatoria": true, "semestre": 1, "area": "Engenharia de Computação", "prerequisitos": [] },
+    { "codigo": "EC006", "nome": "Álgebra Linear e Geometria Analítica", "cargaHoraria": 60, "obrigatoria": true, "semestre": 1, "area": "Engenharia de Computação", "prerequisitos": [] },
+    { "codigo": "EC007", "nome": "Produção Acadêmico-Científica", "cargaHoraria": 30, "obrigatoria": true, "semestre": 1, "area": "Engenharia de Computação", "prerequisitos": [] },
+
+    { "codigo": "EC008", "nome": "Algoritmos e Técnicas de Programação", "cargaHoraria": 90, "obrigatoria": true, "semestre": 2, "area": "Engenharia de Computação", "prerequisitos": [] },
+    { "codigo": "EC009", "nome": "Projeto Digital I", "cargaHoraria": 90, "obrigatoria": true, "semestre": 2, "area": "Engenharia de Computação", "prerequisitos": [] },
+    { "codigo": "EC010", "nome": "Projeto Integrador I", "cargaHoraria": 30, "obrigatoria": true, "semestre": 2, "area": "Engenharia de Computação", "prerequisitos": [] },
+    { "codigo": "EC011", "nome": "Cálculo B", "cargaHoraria": 60, "obrigatoria": true, "semestre": 2, "area": "Engenharia de Computação", "prerequisitos": ["Cálculo A"] },
+    { "codigo": "EC012", "nome": "Estatística Básica", "cargaHoraria": 30, "obrigatoria": true, "semestre": 2, "area": "Engenharia de Computação", "prerequisitos": [] },
+    { "codigo": "EC013", "nome": "Fundamentos de Física A", "cargaHoraria": 75, "obrigatoria": true, "semestre": 2, "area": "Engenharia de Computação", "prerequisitos": [] },
+
+    { "codigo": "EC014", "nome": "Algoritmos e Estruturas de Dados", "cargaHoraria": 90, "obrigatoria": true, "semestre": 3, "area": "Engenharia de Computação", "prerequisitos": ["Algoritmos e Técnicas de Programação"] },
+    { "codigo": "EC015", "nome": "Arquitetura e Organização de Computadores", "cargaHoraria": 90, "obrigatoria": true, "semestre": 3, "area": "Engenharia de Computação", "prerequisitos": ["Projeto Digital I"] },
+    { "codigo": "EC016", "nome": "Projeto Integrador II", "cargaHoraria": 60, "obrigatoria": true, "semestre": 3, "area": "Engenharia de Computação", "prerequisitos": ["Projeto Integrador I"] },
+    { "codigo": "EC017", "nome": "Equações Diferenciais Ordinárias", "cargaHoraria": 60, "obrigatoria": true, "semestre": 3, "area": "Engenharia de Computação", "prerequisitos": ["Cálculo B"] },
+    { "codigo": "EC018", "nome": "Probabilidade", "cargaHoraria": 30, "obrigatoria": true, "semestre": 3, "area": "Engenharia de Computação", "prerequisitos": ["Estatística Básica"] },
+    { "codigo": "EC019", "nome": "Fundamentos de Física B", "cargaHoraria": 75, "obrigatoria": true, "semestre": 3, "area": "Engenharia de Computação", "prerequisitos": ["Fundamentos de Física A"] },
+
+    { "codigo": "EC020", "nome": "Algoritmos e Classificação de Dados", "cargaHoraria": 75, "obrigatoria": true, "semestre": 4, "area": "Engenharia de Computação", "prerequisitos": ["Algoritmos e Estruturas de Dados"] },
+    { "codigo": "EC021", "nome": "Projeto Digital II", "cargaHoraria": 90, "obrigatoria": true, "semestre": 4, "area": "Engenharia de Computação", "prerequisitos": ["Projeto Digital I"] },
+    { "codigo": "EC022", "nome": "Projeto Integrador III", "cargaHoraria": 60, "obrigatoria": true, "semestre": 4, "area": "Engenharia de Computação", "prerequisitos": ["Projeto Integrador II"] },
+    { "codigo": "EC023", "nome": "Circuitos Elétricos I", "cargaHoraria": 60, "obrigatoria": true, "semestre": 4, "area": "Engenharia de Computação", "prerequisitos": [] },
+    { "codigo": "EC024", "nome": "Mecânica Geral", "cargaHoraria": 60, "obrigatoria": true, "semestre": 4, "area": "Engenharia de Computação", "prerequisitos": [] },
+
+    { "codigo": "EC025", "nome": "Teoria da Computação", "cargaHoraria": 60, "obrigatoria": true, "semestre": 5, "area": "Engenharia de Computação", "prerequisitos": ["Algoritmos e Estruturas de Dados"] },
+    { "codigo": "EC026", "nome": "Sistemas Operacionais", "cargaHoraria": 90, "obrigatoria": true, "semestre": 5, "area": "Engenharia de Computação", "prerequisitos": ["Arquitetura e Organização de Computadores"] },
+    { "codigo": "EC027", "nome": "Engenharia de Software", "cargaHoraria": 75, "obrigatoria": true, "semestre": 5, "area": "Engenharia de Computação", "prerequisitos": ["Algoritmos e Estruturas de Dados"] },
+    { "codigo": "EC028", "nome": "Projeto Integrador IV", "cargaHoraria": 60, "obrigatoria": true, "semestre": 5, "area": "Engenharia de Computação", "prerequisitos": ["Projeto Integrador III"] },
+
+    { "codigo": "EC029", "nome": "Sistemas Embarcados", "cargaHoraria": 90, "obrigatoria": true, "semestre": 6, "area": "Engenharia de Computação", "prerequisitos": ["Projeto Digital II"] },
+    { "codigo": "EC030", "nome": "Fundamentos e Avaliação de Redes", "cargaHoraria": 90, "obrigatoria": true, "semestre": 6, "area": "Engenharia de Computação", "prerequisitos": ["Arquitetura e Organização de Computadores"] },
+    { "codigo": "EC031", "nome": "Projeto Integrador V", "cargaHoraria": 60, "obrigatoria": true, "semestre": 6, "area": "Engenharia de Computação", "prerequisitos": ["Projeto Integrador IV"] },
+
+    { "codigo": "EC032", "nome": "Fenômenos de Transporte A", "cargaHoraria": 45, "obrigatoria": true, "semestre": 7, "area": "Engenharia de Computação", "prerequisitos": ["Fundamentos de Física B"] },
+    { "codigo": "EC033", "nome": "Introdução à Economia para Engenheiros", "cargaHoraria": 30, "obrigatoria": true, "semestre": 7, "area": "Engenharia de Computação", "prerequisitos": [] },
+    { "codigo": "EC034", "nome": "Ciência de Dados", "cargaHoraria": 60, "obrigatoria": true, "semestre": 7, "area": "Engenharia de Computação", "prerequisitos": ["Algoritmos e Classificação de Dados"] },
+    { "codigo": "EC035", "nome": "Inteligência Artificial", "cargaHoraria": 60, "obrigatoria": true, "semestre": 7, "area": "Engenharia de Computação", "prerequisitos": ["Algoritmos e Classificação de Dados", "Teoria da Computação"] },
+
+
+    { "codigo": "EC037", "nome": "Fundamentos de Ciência dos Materiais", "cargaHoraria": 30, "obrigatoria": true, "semestre": 8, "area": "Engenharia de Computação", "prerequisitos": [] },
+    { "codigo": "EC039", "nome": "Projeto de Pesquisa em Engenharia de Computação", "cargaHoraria": 45, "obrigatoria": true, "semestre": 8, "area": "Engenharia de Computação", "prerequisitos": [] },
+
+    { "codigo": "EC041", "nome": "Empreendedorismo e Inovação", "cargaHoraria": 60, "obrigatoria": true, "semestre": 9, "area": "Engenharia de Computação", "prerequisitos": [] }
+    ],
+  "optativas": [
+    { "codigo": "OPT001", "nome": "Informática na Educação", "cargaHoraria": 60, "obrigatoria": false, "semestre": 4, "area": "Engenharia de Computacao", "prerequisitos": ["Engenharia de Software"] },
+  { "codigo": "OPT002", "nome": "Segurança da Informação e Cibersegurança", "cargaHoraria": 60, "obrigatoria": false, "semestre": 4, "area": "Engenharia de Computacao", "prerequisitos": ["Fundamentos e Avaliação de Redes"] },
+  { "codigo": "OPT003", "nome": "Processamento Paralelo e Distribuído", "cargaHoraria": 60, "obrigatoria": false, "semestre": 4, "area": "Engenharia de Computacao", "prerequisitos": ["Fundamentos e Avaliação de Redes"] },
+  { "codigo": "OPT004", "nome": "Técnicas e Projeto Aplicado de Sistemas Digitais VLSI", "cargaHoraria": 60, "obrigatoria": false, "semestre": 4, "area": "Engenharia de Computacao", "prerequisitos": ["Projeto Digital II"] },
+  { "codigo": "OPT005", "nome": "Desafios de Programação", "cargaHoraria": 60, "obrigatoria": false, "semestre": 4, "area": "Engenharia de Computacao", "prerequisitos": ["Problemas e Algoritmos"] },
+  { "codigo": "OPT006", "nome": "Concepção de Circuitos Integrados", "cargaHoraria": 60, "obrigatoria": false, "semestre": 4, "area": "Engenharia de Computacao", "prerequisitos": ["Projeto Digital II"] },
+  { "codigo": "OPT007", "nome": "Desenvolvimento de Software Livre", "cargaHoraria": 60, "obrigatoria": false, "semestre": 4, "area": "Engenharia de Computacao", "prerequisitos": ["Algoritmos e Classificação de Dados"] },
+  { "codigo": "OPT008", "nome": "Ferramentas de CAD", "cargaHoraria": 60, "obrigatoria": false, "semestre": 4, "area": "Engenharia de Computacao", "prerequisitos": ["Projeto Digital I", "Algoritmos e Classificação de Dados"] },
+  { "codigo": "OPT009", "nome": "Introdução à Comunicação Móvel", "cargaHoraria": 60, "obrigatoria": false, "semestre": 4, "area": "Engenharia de Computacao", "prerequisitos": [] },
+  { "codigo": "OPT010", "nome": "Instrumentação Industrial", "cargaHoraria": 60, "obrigatoria": false, "semestre": 4, "area": "Engenharia de Computacao", "prerequisitos": [] },
+  { "codigo": "OPT011", "nome": "Lógica para Computação", "cargaHoraria": 60, "obrigatoria": false, "semestre": 4, "area": "Engenharia de Computacao", "prerequisitos": ["Algoritmos e Estruturas de Dados"] },
+  { "codigo": "OPT012", "nome": "Matemática Discreta", "cargaHoraria": 60, "obrigatoria": false, "semestre": 4, "area": "Engenharia de Computacao", "prerequisitos": [] },
+  { "codigo": "OPT013", "nome": "Linguagens Formais", "cargaHoraria": 60, "obrigatoria": false, "semestre": 4, "area": "Engenharia de Computacao", "prerequisitos": ["Algoritmos e Classificação de Dados"] },
+  { "codigo": "OPT014", "nome": "Processamento Digital de Sinais", "cargaHoraria": 60, "obrigatoria": false, "semestre": 4, "area": "Engenharia de Computacao", "prerequisitos": ["Fundamentos de Física B", "Algoritmos e Técnicas de Programação", "Equações Diferenciais Ordinárias"] },
+  { "codigo": "OPT015", "nome": "Mineração de Dados", "cargaHoraria": 60, "obrigatoria": false, "semestre": 4, "area": "Engenharia de Computacao", "prerequisitos": ["Fundamentos de Hardware e Software"] },
+  { "codigo": "OPT016", "nome": "Deep Learning", "cargaHoraria": 60, "obrigatoria": false, "semestre": 4, "area": "Engenharia de Computacao", "prerequisitos": ["Fundamentos de Hardware e Software"] },
+  { "codigo": "OPT017", "nome": "Tópicos Especiais em Computação", "cargaHoraria": 60, "obrigatoria": false, "semestre": 4, "area": "Engenharia de Computacao", "prerequisitos": [] }
+  ]
+}
+
