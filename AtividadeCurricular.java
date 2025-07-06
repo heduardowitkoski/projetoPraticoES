@@ -20,48 +20,20 @@ public class AtividadeCurricular implements RequisitoIntegralizacao {
         this.obrigatoria = obrigatoria;
     }
 
-    public String getCodigo() {
-        return codigo;
-    }
-
-    public int getCargaHoraria() {
-        return cargaHoraria;
-    }
-
-    public String getArea() {
-        return area;
-    }
-
-    public int getPeriodoSugerido() {
-        return periodoSugerido;
-    }
-
-    public List<String> getPreRequisitos() {
-        return preRequisitos;
-    }
-
-    public boolean isObrigatoria() {
-        return obrigatoria;
-    }
+    public String getCodigo() { return codigo; }
 
     @Override
-    public String getNome() {
-        return nome;
-    }
+    public String getNome() { return nome; }
 
     @Override
-    public boolean isConcluido() {
-        return concluido;
-    }
+    public boolean isConcluido() { return concluido; }
 
     @Override
-    public void concluir() {
-        this.concluido = true;
-    }
+    public void concluir() { concluido = true; }
 
     @Override
     public String toString() {
-        return nome + " (" + codigo + ") - " + cargaHoraria + "h | " + area + " | Período: " + periodoSugerido +
-                (obrigatoria ? " [Obrigatória]" : " [Optativa]") + (concluido ? " ✅" : " ❌");
+        return nome + " (" + codigo + ") - " + cargaHoraria + "h"
+                + (obrigatoria ? " [Obrigatória]" : " [Optativa]");
     }
 }

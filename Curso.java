@@ -9,11 +9,11 @@ public class Curso {
         this.requisitos = requisitos;
     }
 
-    public String getNome() {
-        return nome;
-    }
-
     public List<RequisitoIntegralizacao> getRequisitos() {
         return requisitos;
+    }
+
+    public String getNome() {
+        return nome;
     }
 }
