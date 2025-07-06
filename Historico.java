@@ -2,40 +2,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Historico {
-    private Discente discente;
     private List<RequisitoIntegralizacao> requisitos;
-    private List<RequisitoIntegralizacao> requisitosConcluidos = new ArrayList<>();
+    private List<RequisitoIntegralizacao> concluidos;
 
-    public Historico(Discente discente, List<RequisitoIntegralizacao> requisitos) {
-        this.discente = discente;
+    public Historico(List<RequisitoIntegralizacao> requisitos) {
         this.requisitos = requisitos;
+        this.concluidos = new ArrayList<>();
     }
 
-    public Discente getDiscente() {
-        return discente;
-    }
-
-    public List<RequisitoIntegralizacao> getRequisitos() {
-        return requisitos;
+    public void adicionarRequisito(RequisitoIntegralizacao r) {
+        concluidos.add(r);
     }
 
     public List<RequisitoIntegralizacao> getRequisitosConcluidos() {
-        return requisitosConcluidos;
-    }
-
-    public void adicionarRequisito(RequisitoIntegralizacao requisito) {
-        requisitosConcluidos.add(requisito);
+        return concluidos;
     }
 
     public void listarRequisitosFormatado() {
-        System.out.println("\n===== Histórico de " + discente.getNome() + " =====");
+        System.out.println("\n--- Histórico ---");
         for (RequisitoIntegralizacao r : requisitos) {
-            String status = requisitosConcluidos.contains(r) ? "✅ Concluído" : "❌ Não concluído";
+            String status = concluidos.contains(r) ? "✅" : "❌";
             System.out.println(r + " - " + status);
         }
-    }
-
-    public void atualizarRequisitos(List<RequisitoIntegralizacao> novosRequisitos) {
-        this.requisitos = novosRequisitos;
     }
 }

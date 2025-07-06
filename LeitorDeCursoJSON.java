@@ -1,53 +1,36 @@
 import com.google.gson.*;
 import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class LeitorDeCursoJSON {
-
     public static Curso lerCursoDeArquivo(String caminho) {
         Gson gson = new Gson();
         try (FileReader reader = new FileReader(caminho)) {
-            JsonObject jsonObject = gson.fromJson(reader, JsonObject.class);
-
-            String nomeCurso = jsonObject.get("nome").getAsString();
-            JsonArray componentesJson = jsonObject.getAsJsonArray("componentes");
+            JsonObject obj = gson.fromJson(reader, JsonObject.class);
+            String nomeCurso = obj.get("nome").getAsString();
+            JsonArray componentes = obj.getAsJsonArray("componentes");
 
             List<RequisitoIntegralizacao> requisitos = new ArrayList<>();
 
-            for (JsonElement elemento : componentesJson) {
-                JsonObject obj = elemento.getAsJsonObject();
+            for (JsonElement e : componentes) {
+                JsonObject c = e.getAsJsonObject();
+                String codigo = c.get("codigo").getAsString();
+                String nome = c.get("nome").getAsString();
+                int cargaHoraria = c.get("cargaHoraria").getAsInt();
+                String area = c.has("area") ? c.get("area").getAsString() : "Geral";
+                int semestre = c.has("semestre") ? c.get("semestre").getAsInt() : 0;
+                boolean obrigatoria = c.get("obrigatoria").getAsBoolean();
 
-                // Defina codigo e area como "N/A" se não estiverem no JSON
-                String codigo = obj.has("codigo") ? obj.get("codigo").getAsString() : "N/A";
-                String nome = obj.get("nome").getAsString();
-                int cargaHoraria = obj.get("cargaHoraria").getAsInt();
-                String area = obj.has("area") ? obj.get("area").getAsString() : "Geral";
-                int semestre = obj.has("semestre") ? obj.get("semestre").getAsInt() : 0;
-
-                List<String> prerequisitos = new ArrayList<>();
-                if (obj.has("prerequisitos")) {
-                    JsonArray prereqArray = obj.getAsJsonArray("prerequisitos");
-                    for (JsonElement e : prereqArray) {
-                        prerequisitos.add(e.getAsString());
-                    }
+                List<String> prereqs = new ArrayList<>();
+                if (c.has("prerequisitos")) {
+                    for (JsonElement p : c.getAsJsonArray("prerequisitos"))
+                        prereqs.add(p.getAsString());
                 }
 
-                boolean obrigatoria = obj.get("obrigatoria").getAsBoolean();
-
-                requisitos.add(new AtividadeCurricular(
-                        codigo,
-                        nome,
-                        cargaHoraria,
-                        area,
-                        semestre,
-                        prerequisitos,
-                        obrigatoria
-                ));
+                requisitos.add(new AtividadeCurricular(codigo, nome, cargaHoraria, area, semestre, prereqs, obrigatoria));
             }
 
-            // Adiciona requisitos institucionais fixos (não estão no JSON)
+            // Adiciona componentes fixos
             requisitos.add(new Enade());
             requisitos.add(new EstagioSupervisionado());
             requisitos.add(new ProjetoFinal());
@@ -58,12 +41,9 @@ public class LeitorDeCursoJSON {
             requisitos.add(new UnipampaCidada());
 
             return new Curso(nomeCurso, requisitos);
-
-        } catch (IOException e) {
-            System.out.println("Erro ao ler arquivo JSON: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Erro ao ler o JSON: " + e.getMessage());
             return null;
         }
     }
-
 }
-
